@@ -1,0 +1,273 @@
+@import 'variables';
+@import 'mixins';
+
+// CSS reset (simplified)
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: $font-family;
+  line-height: 1.5;
+  background-color: $color-background-light;
+  color: $color-text-light;
+  @include transition-colors;
+}
+
+body.dark-mode {
+  background-color: $color-background-dark;
+  color: $color-text-dark;
+}
+
+.container {
+  max-width: $max-width;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+a {
+  color: $color-primary;
+  text-decoration: none;
+  &:hover,
+  &:focus {
+    text-decoration: underline;
+    outline: none;
+  }
+}
+
+header,
+section,
+footer {
+  padding: 2rem 0;
+}
+
+header {
+  background-color: lighten($color-primary, 40%);
+  color: white;
+  text-align: center;
+  border-radius: 6px;
+  box-shadow: 0 2px 8px rgba(79, 70, 229, 0.3);
+  h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.2rem;
+  }
+  p {
+    font-weight: 600;
+  }
+}
+
+nav {
+  background-color: $color-background-light;
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  box-shadow: 0 1px 5px rgba(0,0,0,0.1);
+  ul {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    list-style: none;
+    padding: 1rem 0;
+  }
+  a {
+    font-weight: 600;
+    font-size: 1rem;
+    color: $color-text-light;
+    &:hover,
+    &:focus {
+      color: $color-primary;
+    }
+  }
+  // Dark mode nav colors
+  body.dark-mode & {
+    background-color: $color-background-dark;
+    ul {
+      a {
+        color: $color-text-dark;
+        &:hover,
+        &:focus {
+          color: $color-accent;
+        }
+      }
+    }
+  }
+}
+
+section {
+  max-width: $max-width;
+  margin: 0 auto 3rem auto;
+  &:last-child {
+    margin-bottom: 1rem;
+  }
+
+  h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    border-bottom: 3px solid $color-primary;
+    padding-bottom: 0.3rem;
+  }
+}
+
+.work-experience,
+.education,
+.skills,
+.projects {
+  // Common spacing & typography for lists
+  ul {
+    list-style: disc inside;
+    margin-top: 0.5rem;
+    line-height: 1.4;
+  }
+  li {
+    margin-bottom: 0.5rem;
+  }
+}
+
+.skills-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  li {
+    background-color: $color-primary;
+    color: white;
+    padding: 0.3rem 0.8rem;
+    border-radius: 9999px;
+    font-size: 0.875rem;
+  }
+}
+
+.projects-grid {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: 1fr;
+  @media(min-width: 600px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .project-card {
+    background-color: $color-background-light;
+    border-radius: 6px;
+    padding: 1rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    @include transition-colors;
+
+    h3 {
+      margin-bottom: 0.5rem;
+      color: $color-primary;
+    }
+    p {
+      margin-bottom: 1rem;
+    }
+    a {
+      font-weight: 600;
+      color: $color-primary;
+      &:hover,
+      &:focus {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  body.dark-mode & {
+    .project-card {
+      background-color: darken($color-background-dark, 10%);
+      box-shadow: 0 2px 10px rgba(79, 70, 229, 0.4);
+    }
+  }
+}
+
+footer {
+  text-align: center;
+  font-size: 0.9rem;
+  padding: 1rem 0;
+  border-top: 1px solid lighten($color-primary, 50%);
+  color: $color-text-light;
+
+  body.dark-mode & {
+    border-top-color: lighten($color-primary, 30%);
+    color: $color-text-dark;
+  }
+}
+
+// Mobile first base styles are already set.
+
+// Navigation adjustments for smaller screens
+nav ul {
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  padding: 1rem 0;
+
+  @media (max-width: 480px) {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+  }
+}
+
+// Header text sizing
+header {
+  h1 {
+    font-size: 2rem;
+
+    @media (max-width: 480px) {
+      font-size: 1.6rem;
+    }
+  }
+
+  p {
+    font-size: 1rem;
+
+    @media (max-width: 480px) {
+      font-size: 0.9rem;
+    }
+  }
+}
+
+// Section padding for smaller screens
+section {
+  padding: 1.5rem 1rem;
+
+  @media (max-width: 480px) {
+    padding: 1rem 0.5rem;
+  }
+}
+
+// Projects grid: single column on mobile, two columns on tablet+
+.projects-grid {
+  grid-template-columns: 1fr;
+
+  @media (min-width: 600px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (min-width: 900px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+// Skills list wrap nicely on mobile
+.skills-list {
+  justify-content: center;
+  li {
+    font-size: 0.8rem;
+
+    @media (min-width: 600px) {
+      font-size: 0.875rem;
+    }
+  }
+}
+
+// Container max-width for smaller devices
+.container {
+  max-width: 100%;
+  padding: 0 1rem;
+  margin: 0 auto;
+  @media (min-width: 600px) {
+    max-width: $max-width;
+  }
+}

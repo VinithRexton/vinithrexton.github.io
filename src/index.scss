@@ -1,0 +1,129 @@
+/* Variables */
+$primary-color: #1e40af;
+$background-color: #f9fafb;
+$text-color: #111827;
+$header-bg: #ffffff;
+$shadow-color: rgba(0, 0, 0, 0.1);
+
+/* Reset and base styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: $background-color;
+  color: $text-color;
+  line-height: 1.6;
+}
+
+/* Layout */
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+/* Header */
+header {
+  background-color: $header-bg;
+  padding: 1rem 0;
+  box-shadow: 0 2px 5px $shadow-color;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    h1 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: $primary-color;
+    }
+
+    ul {
+      list-style: none;
+      display: flex;
+      gap: 1.5rem;
+
+      a {
+        text-decoration: none;
+        color: $text-color;
+        font-weight: 600;
+        transition: color 0.3s;
+
+        &:hover {
+          color: $primary-color;
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}
+
+/* Sections */
+section {
+  margin-bottom: 4rem;
+
+  h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    border-bottom: 2px solid $primary-color;
+    display: inline-block;
+    padding-bottom: 0.3rem;
+  }
+
+  p {
+    font-size: 1.125rem;
+  }
+}
+
+/* Projects grid */
+.projects-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+
+  @media(min-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .project-card {
+    background: white;
+    border-radius: 6px;
+    box-shadow: 0 3px 8px $shadow-color;
+    padding: 1.5rem;
+
+    h3 {
+      font-size: 1.25rem;
+      margin-bottom: 0.5rem;
+      color: $primary-color;
+    }
+
+    a {
+      color: $primary-color;
+      text-decoration: none;
+      font-weight: 600;
+      display: inline-block;
+      margin-top: 1rem;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 1rem;
+  background-color: $header-bg;
+  color: darken($text-color, 40%);
+  font-size: 0.875rem;
+}
