@@ -6,6 +6,7 @@ const projects = [
     role: 'Lead Developer',
     tools: ['React', 'Vite', 'SCSS'],
     description: 'A responsive, accessible portfolio website showcasing projects and skills.',
+    link: 'toshiba-commerce/',
   },
   {
     title: 'E-Commerce Dashboard',
@@ -19,12 +20,14 @@ const Projects = () => (
   <section id="projects" tabIndex={-1} aria-label="Projects">
     <h2>Projects</h2>
     <div className="projects-grid">
-      {projects.map(({ title, role, tools, description }, i) => (
+      {projects.map(({ title, role, tools, description, link }, i) => (
         <article className="project-card" key={i}>
-          <h3>{title}</h3>
+          <a href={link}>
+            <h3>{title}</h3>
           <p><strong>Role:</strong> {role}</p>
           <p><strong>Tools:</strong> {tools.join(', ')}</p>
           <p>{description}</p>
+          </a>
         </article>
       ))}
     </div>
