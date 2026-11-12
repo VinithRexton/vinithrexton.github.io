@@ -5,13 +5,11 @@ const educationList = [
     degree: 'B.Sc. Computer Science',
     university: 'University of Chennai',
     years: '2015 - 2018',
-    gpa: '3.8 GPA',
   },
   {
     degree: 'Higher Secondary Certificate',
     university: 'Chennai Higher Secondary School',
     years: '2013 - 2015',
-    gpa: '92%',
   },
 ];
 

@@ -1,12 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Lora&display=swap');
+
+
+
 // Color variables for light and dark themes
 $color-primary: #4f46e5;
 $color-background-light: #ffffff;
 $color-text-light: #111827;
-$color-background-dark: #1e293b;
+$color-background-dark: #000000;
 $color-text-dark: #e0e7ff;
 $color-accent: #2563eb;
 
 // Font and spacing
-$font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-$max-width: 960px;
+$font-family: 'Roboto', Tahoma, Geneva, Verdana, sans-serif;
+$heading-font-family:'Lora', serif;
+$max-width: 1440px;
 $transition-duration: 0.3s;

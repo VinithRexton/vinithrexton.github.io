@@ -1,0 +1,5 @@
+// For smooth color transition on dark mode toggle
+@mixin transition-colors {
+  transition: background-color $transition-duration ease,
+              color $transition-duration ease;
+}

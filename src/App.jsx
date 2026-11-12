@@ -1,47 +1,42 @@
-import React, { useState, useEffect } from 'react';
-import Navbar from './components/Navbar';
-import Header from './components/Header';
-import Summary from './components/Summary';
-import WorkExperience from './components/WorkExperience';
-import Education from './components/Education';
-import Skills from './components/Skills';
-import Projects from './components/Projects';
-import DarkModeToggle from './components/DarkModeToggle';
+import { useEffect, useState } from 'react';
+import Navbar from './components/portfolio/Navbar';
+import Hero from './components/portfolio/Hero';
+import ExpertisePreview from './components/portfolio/ExpertisePreview';
+import EnterpriseWork from './components/portfolio/EnterpriseWork';
+import PersonalProjects from './components/portfolio/PersonalProjects';
+import './styles/portfolio.scss';
+
+const getInitialTheme = () => {
+  const savedTheme = window.localStorage.getItem('portfolio-theme');
+  if (savedTheme === 'light' || savedTheme === 'dark') return savedTheme;
+  return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+};
 
 function App() {
-  // Dark mode state with persistence in localStorage
-  const [darkMode, setDarkMode] = useState(() => {
-    return localStorage.getItem('darkMode') === 'true' || false;
-  });
+  const [theme, setTheme] = useState(getInitialTheme);
 
-  // Effect to add/remove dark mode class on body
   useEffect(() => {
-    if (darkMode) {
-      document.body.classList.add('dark-mode');
-    } else {
-      document.body.classList.remove('dark-mode');
-    }
-    localStorage.setItem('darkMode', darkMode);
-  }, [darkMode]);
+    document.documentElement.dataset.theme = theme;
+    window.localStorage.setItem('portfolio-theme', theme);
+  }, [theme]);
+
+  const toggleTheme = () => setTheme((current) => current === 'light' ? 'dark' : 'light');
 
   return (
-    <>
-      <Navbar />
-      <DarkModeToggle darkMode={darkMode} setDarkMode={setDarkMode} />
-
-      <main className="container" tabIndex={-1}>
-        <Header />
-        <Summary />
-        <WorkExperience />
-        <Education />
-        <Skills />
-        <Projects />
+    <div className="portfolio-shell">
+      <a className="skip-link" href="#main-content">Skip to content</a>
+      <Navbar theme={theme} onToggleTheme={toggleTheme} />
+      <main id="main-content">
+        <Hero />
+        <ExpertisePreview />
+        <EnterpriseWork />
+        <PersonalProjects />
       </main>
-
-      <footer>
-        © {new Date().getFullYear()} Vinith Rexton P
+      <footer className="site-footer">
+        <span>© {new Date().getFullYear()} Vinith Rexton P.</span>
+        <span>Designed with intention. Built with care.</span>
       </footer>
-    </>
+    </div>
   );
 }
 

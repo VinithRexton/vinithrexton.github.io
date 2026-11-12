@@ -1,0 +1,26 @@
+export const personalProjects = [
+  {
+    id: 'task-manager',
+    name: 'Task Manager',
+    category: 'Productivity application',
+    liveUrl: 'https://vinithrexton.github.io/task-manager-react-supabase/login',
+    repoUrl: 'https://github.com/VinithRexton/task-manager-react-supabase',
+    summary: 'A personal task-management application with account-based access and tools to organize, find, prioritize and track tasks.',
+    features: ['Authentication and protected routes', 'Create, edit and delete tasks', 'Category, status and priority filters', 'Due-date sorting and task search', 'Task image uploads and profile area'],
+    stack: ['React', 'Vite', 'Supabase', 'React Router', 'SCSS'],
+    visual: 'tasks',
+    label: 'PLAN / PRIORITIZE / COMPLETE',
+  },
+  {
+    id: 'spendwise',
+    name: 'SpendWise',
+    category: 'Personal finance application',
+    liveUrl: 'https://vinithrexton.github.io/spendwise/login',
+    repoUrl: 'https://github.com/VinithRexton/spendwise',
+    summary: 'A personal and shared expense-tracking application with account profiles, workspace-based expense management and receipt handling.',
+    features: ['Authentication and protected dashboard', 'Personal expense records and categories', 'Shared workspaces and member attribution', 'Expense create, edit and delete flows', 'Profile preferences and receipt uploads'],
+    stack: ['React', 'Vite', 'Supabase', 'React Router', 'SCSS', 'Lucide'],
+    visual: 'spendwise',
+    label: 'TRACK / ORGANIZE / UNDERSTAND',
+  },
+];

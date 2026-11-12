@@ -1,12 +1,5 @@
 @import 'variables';
-//@import 'mixins';//
-
-// For smooth color transition on dark mode toggle
-@mixin transition-colors {
-  transition: background-color $transition-duration ease,
-              color $transition-duration ease;
-}
-
+@import 'mixins';
 
 // CSS reset (simplified)
 *,
@@ -54,10 +47,7 @@ footer {
 
 header {
   //background-color: lighten($color-primary, 40%);
-  color: white;
   text-align: center;
-  border-radius: 6px;
-  box-shadow: 0 2px 8px rgba(79, 70, 229, 0.3);
   h1 {
     font-size: 2.5rem;
     margin-bottom: 0.2rem;
@@ -121,7 +111,6 @@ section {
 
 .work-experience,
 .education,
-.skills,
 .projects {
   // Common spacing & typography for lists
   ul {
@@ -134,18 +123,42 @@ section {
   }
 }
 
-.skills-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-  li {
-    background-color: $color-primary;
-    color: white;
-    padding: 0.3rem 0.8rem;
-    border-radius: 9999px;
-    font-size: 0.875rem;
+.skills-section {
+  padding: 2rem 1rem;
+  max-width: 800px;
+  margin: 0 auto;
+  font-family: Arial, sans-serif;
+  color: #222;
+}
+
+.skills-title {
+  font-size: 2rem;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.skills-category {
+  margin-bottom: 2rem;
+
+  .skills-category-title {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: #444;
+  }
+
+  .skills-inline {
+    font-size: 1rem;
+    color: #555;
+  }
+
+  .skill-item {
+    padding: 0 0.2rem;
+    font-weight: 500;
   }
 }
+
 
 .projects-grid {
   display: grid;
@@ -257,17 +270,6 @@ section {
   }
 }
 
-// Skills list wrap nicely on mobile
-.skills-list {
-  justify-content: center;
-  li {
-    font-size: 0.8rem;
-
-    @media (min-width: 600px) {
-      font-size: 0.875rem;
-    }
-  }
-}
 
 // Container max-width for smaller devices
 .container {
@@ -278,7 +280,145 @@ section {
     max-width: $max-width;
   }
 }
+.projects-section {
+  padding: 2rem 0;
+  .projects-title {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
 
-h2{
-  color: red;
+  .project-slide {
+    display: flex;
+    justify-content: center;
+  }
+
+  .project-card {
+    background: var(--bg-color, #fff);
+    color: var(--text-color, #333);
+    padding: 1.5rem;
+    border-radius: 12px;
+    max-width: 600px;
+    width: 90%;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+
+    a {
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
+
+    h3 {
+      margin-bottom: 0.5rem;
+    }
+
+    &:hover {
+      transform: translateY(-5px);
+    }
+  }
+}
+
+// Optional dark mode support
+body.dark-mode {
+  --bg-color: #1e1e1e;
+  --text-color: #f1f1f1;
+
+  .project-card {
+    background: var(--bg-color);
+    color: var(--text-color);
+  }
+}
+
+.header {
+  position: relative;
+  color: white;
+  height: 500px;
+  display: flex;
+  align-items: center;
+  padding-left: 2rem;
+  box-sizing: border-box;
+  overflow: hidden;
+
+  &__background {
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+
+    img.header__img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: brightness(0.75);
+      display: block;
+    }
+  }
+
+  &__gradient {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.7) 0%, transparent 70%);
+    z-index: -1;
+  }
+}
+
+.banner {
+  max-width: 400px;
+  z-index: 1;
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  h1{
+    font-family: $heading-font-family;
+  }
+}
+
+.social_group{
+  display: flex;
+  flex-direction: column;
+  column-gap: 20px;
+.social_icons {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  
+
+  a {
+    font-size: 1.8rem;
+    color: $color-primary;
+    transition: color 0.3s ease;
+
+    &:hover {
+      color: darken($color-primary, 20%);
+    }
+  }
+
+  
+}
+
+}
+.social_btn{
+   padding: 0.5rem 1rem;
+    background-color: $color-primary;
+    color: white;
+    border-radius: 4px;
+    font-weight: 600;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+
+     a {
+    color: white;
+    &:hover {
+      color: darken($color-primary, 20%);
+    }
+  }
+
+    &:hover {
+      background-color: darken($color-primary, 10%);
+    }
 }

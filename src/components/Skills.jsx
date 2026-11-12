@@ -4,21 +4,24 @@ const skills = {
   Languages: ['JavaScript', 'TypeScript', 'HTML5', 'CSS3', 'SCSS'],
   Tools: ['Git', 'Webpack', 'Vite', 'npm', 'Jira'],
   'Soft Skills': ['Communication', 'Team Collaboration', 'Problem Solving', 'Time Management'],
-  Frameworks: ['React', 'Redux', 'React Router'],
+  Frameworks: ['React'],
   'UI/UX Design Tools': ['Figma', 'Adobe XD', 'Sketch'],
 };
 
 const Skills = () => (
-  <section id="skills" tabIndex={-1} aria-label="Skills">
-    <h2>Skills</h2>
+  <section id="skills" tabIndex={-1} aria-label="Skills" className="skills-section">
+    <h2 className="skills-title">Skills</h2>
     {Object.entries(skills).map(([category, list]) => (
-      <div key={category} style={{ marginBottom: '1rem' }}>
-        <h3>{category}</h3>
-        <ul className="skills-list" aria-label={`${category} skills`}>
-          {list.map((skill) => (
-            <li key={skill}>{skill}</li>
+      <div key={category} className="skills-category">
+        <h3 className="skills-category-title">{category}</h3>
+        <p className="skills-inline">
+          {list.map((skill, idx) => (
+            <span key={skill} className="skill-item">
+              {skill}
+              {idx < list.length - 1 && ', '}
+            </span>
           ))}
-        </ul>
+        </p>
       </div>
     ))}
   </section>
